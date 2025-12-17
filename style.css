@@ -1,0 +1,492 @@
+:root {
+    --bg-color: #050505;
+    --text-main: #E0E0E0;
+    --accent: #D4AF37;
+    /* Royal Gold */
+    --font-head: 'Oswald', sans-serif;
+    --font-serif: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-body);
+    overflow-x: hidden;
+    cursor: none;
+    /* Custom cursor */
+}
+
+/* Custom Cursor */
+.cursor {
+    width: 10px;
+    height: 10px;
+    background: var(--text-main);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    mix-blend-mode: difference;
+}
+
+.cursor-follower {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--text-main);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transition: transform 0.1s;
+}
+
+/* 3D Canvas */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    opacity: 0.6;
+    /* Slight fade to let text pop */
+}
+
+/* Navigation */
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 2rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+    mix-blend-mode: difference;
+}
+
+.logo {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.menu-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin-left: 3rem;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+}
+
+.menu-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 1px;
+    background: var(--text-main);
+    transition: width 0.3s;
+}
+
+.menu-links a:hover::after {
+    width: 100%;
+}
+
+/* Typography Helpers */
+h1 {
+    font-family: var(--font-head);
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 0.9;
+}
+
+h2 {
+    font-family: var(--font-head);
+    text-transform: uppercase;
+    margin: 0;
+}
+
+p {
+    font-family: var(--font-body);
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* Hero */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-size: 10vw;
+    /* Responsive huge text */
+    letter-spacing: -2px;
+    color: var(--text-main);
+}
+
+.hero-text h1.outline {
+    -webkit-text-stroke: 1px var(--text-main);
+    color: transparent;
+}
+
+.hero-sub {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent);
+}
+
+/* About (Split Layout) */
+.about-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 100vh;
+    align-items: center;
+    padding: 4rem;
+    gap: 4rem;
+}
+
+.about-img-container {
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.about-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: filter 0.5s;
+}
+
+.about-img:hover {
+    filter: grayscale(0%);
+}
+
+.about-content h2 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color:#D4AF37;
+    
+}
+
+.section-titlea {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: #D4AF37;
+    margin-left: -250px;
+    
+}    
+
+.big-text {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+    margin-left: -650px;
+}
+
+.stats-grid {
+    display: flex;
+    gap: 4rem;
+}
+
+.stat-item span {
+    display: block;
+    font-size: 3rem;
+    font-family: var(--font-head);
+    color: var(--accent);
+}
+
+/* Resume Block (Education/Achievements) */
+.resume-blockh1 {
+    color: var(--accent);
+}
+
+.resume-block {
+    margin-top: 3rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+}
+
+.resume-block h3 {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.resume-item {
+    margin-bottom: 1.5rem;
+}
+
+.resume-item h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-main);
+}
+
+.resume-item p {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    color: #f0f0f0;
+    /* Brighter white */
+    line-height: 1.5;
+}
+
+.resume-item small {
+    display: block;
+    margin-top: 0.3rem;
+    color: #ccc;
+}
+
+.sports-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0;
+}
+
+.sports-list li {
+    margin-bottom: 0.4rem;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.sports-list strong {
+    color: var(--accent);
+}
+
+/* Experience Section (Editorial List) */
+.experience-section {
+    padding: 6rem 0;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.exp-list {
+    margin-top: 4rem;
+}
+
+.exp-item {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 2fr;
+    padding: 3rem 4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s;
+}
+
+.exp-item:hover {
+    background: rgba(212, 175, 55, 0.05);
+    /* Gold tint */
+}
+
+.exp-date {
+    font-family: var(--font-head);
+    font-size: 1.2rem;
+    color: #eee;
+    margin: 10px 0;
+    padding: 10px 0;
+    /* Brighter */
+}
+
+.exp-role h3 {
+    font-size: 2rem;
+    color: #fff;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+.exp-role h4 {
+    margin: 10px 0;
+    padding: 10px 0;
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+.exp-desc {
+    font-size: 1rem;
+    color: #eee;
+    /* Brighter */
+    line-height: 1.7;
+    margin: 10px 0;
+    padding: 10px 0;
+}
+
+/* Skills Section (Grid) */
+.skills-section {
+    padding: 6rem 4rem;
+}
+
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.skill-col h3 {
+    font-size: 1.2rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.skill-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-col li {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    margin-bottom: 0.8rem;
+    color: #ffffff;
+    transition: color 0.3s;
+    cursor: default;
+}
+
+.skill-col li:hover {
+    color: var(--text-main);
+}
+
+/* Horizontal Work */
+.work-section {
+    height: auto;
+    padding: 6rem 0;
+    overflow: hidden;
+}
+
+.work-wrapper {
+    padding-left: 4rem;
+}
+
+.work-title {
+    margin-bottom: 4rem;
+}
+
+.work-title h2 {
+    font-size: 5rem;
+}
+
+.horizontal-container {
+    display: flex;
+    gap: 4rem;
+    width: max-content;
+    /* Important for horizontal scroll calculation */
+}
+
+.work-card {
+    min-width: 400px;
+    height: 50vh;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #0a0a0a;
+    transition: transform 0.3s;
+}
+
+.work-card:hover {
+    transform: translateY(-10px);
+    background: #111;
+}
+
+.card-num {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.work-card h3 {
+    font-family: var(--font-head);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.tags {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: #888;
+}
+
+/* Marquee */
+.skills-marquee {
+    padding: 4rem 0;
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-track {
+    display: inline-block;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee-track span {
+    font-family: var(--font-head);
+    font-size: 4rem;
+    color: #333;
+    margin-right: 2rem;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Contact */
+.contact-section {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 8rem;
+    line-height: 1;
+}
+
+.email-link {
+    font-size: 2rem;
+    font-family: var(--font-serif);
+    color: var(--accent);
+    text-decoration: none;
+    margin-top: 2rem;
+}
+
+.footer-bottom {
+    margin-top: auto;
+    padding-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+    opacity: 0.5;
+}
