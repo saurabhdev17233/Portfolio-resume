@@ -183,8 +183,8 @@ p {
 .about-content h2 {
     font-size: 4rem;
     margin-bottom: 2rem;
-    color:#D4AF37;
-    
+    color: #D4AF37;
+
 }
 
 .section-titlea {
@@ -192,8 +192,8 @@ p {
     margin-bottom: 2rem;
     color: #D4AF37;
     margin-left: -250px;
-    
-}    
+
+}
 
 .big-text {
     font-size: 1.5rem;
@@ -489,4 +489,170 @@ p {
     gap: 2rem;
     font-size: 0.9rem;
     opacity: 0.5;
+}
+
+/* ============================
+   RESPONSIVE DESIGN (Mobile)
+   ============================ */
+
+@media (max-width: 1024px) {
+
+    /* Tablet & Small Laptops */
+    .about-section,
+    .experience-section,
+    .skills-section,
+    .contact-section {
+        padding: 4rem 2rem;
+    }
+
+    .exp-item {
+        padding: 2rem;
+        grid-template-columns: 1fr;
+        /* Stack Role/Date/Desc */
+        gap: 1rem;
+    }
+
+    .exp-date {
+        margin-bottom: 0.5rem;
+        font-size: 1rem;
+        opacity: 0.7;
+    }
+
+    .about-section {
+        display: flex;
+        /* Ensure column flex if applicable, or block */
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .about-details-grid {
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile Devices */
+
+    html,
+    body {
+        overflow-x: hidden;
+        /* Prevent page sway */
+        width: 100%;
+    }
+
+    /* 1. Navigation */
+    .main-nav {
+        padding: 1.5rem;
+        justify-content: center;
+    }
+
+    .main-nav .menu-links {
+        display: none;
+    }
+
+    /* 2. Hero */
+    .hero-text h1 {
+        font-size: 15vw;
+    }
+
+    .hero-sub {
+        font-size: 1rem;
+        padding: 0 1rem;
+        /* Prevent edge touching */
+    }
+
+    /* 3. About */
+    .about-intro {
+        width: 100%;
+        overflow-wrap: break-word;
+        /* Ensure wrapping */
+    }
+
+    .about-intro h2 {
+        font-size: 12vw;
+        /* Use Viewport width instead of rem to guarantee fit */
+        line-height: 1;
+        word-break: break-word;
+    }
+
+    .big-text {
+        font-size: 1.1rem;
+    }
+
+    .about-details-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .about-img-container {
+        position: relative;
+        top: 0;
+        height: 40vh;
+        /* Reduced height */
+        width: 100%;
+    }
+
+    /* 4. Experience & Skills */
+    .section-title {
+        font-size: 2.5rem !important;
+        padding-left: 0 !important;
+        /* Remove padding causing shift */
+        text-align: center;
+    }
+
+    .exp-item {
+        padding: 2rem 1rem;
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    /* 5. Horizontal Work */
+    .work-section {
+        padding: 4rem 0;
+    }
+
+    .work-title h2 {
+        font-size: 3rem;
+        /* Reduce title size */
+        padding: 0 1rem;
+    }
+
+    .work-wrapper {
+        padding-left: 1rem;
+        width: 100%;
+        overflow-x: auto;
+        /* Enable native scroll on mobile if GSAP fails */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .horizontal-container {
+        width: max-content;
+        gap: 1rem;
+        padding-right: 1rem;
+    }
+
+    .work-card {
+        min-width: 85vw;
+        height: 50vh;
+        margin-right: 0;
+        /* Handled by gap */
+    }
+
+    /* 6. Contact */
+    .contact-section {
+        padding: 4rem 1rem;
+    }
+
+    .contact-section h2 {
+        font-size: 15vw;
+    }
+
+    .email-link {
+        font-size: 6vw;
+        /* Responsive font size */
+    }
 }
